@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Header } from '@/components/layout/Header';
 import { CategorySelector } from '@/components/game/CategorySelector';
 import { CardDeck } from '@/components/game/CardDeck';
+import { SuggestionForm } from '@/components/game/SuggestionForm';
 
 const categories = [
   {
@@ -32,24 +33,28 @@ const categories = [
 
 const questions = {
   perspective: [
-    { id: '1', category: 'Perspectiva', emoji: '🤓', text: '¿Crees que la felicidad se encuentra en lo cotidiano o en lo extraordinario?' },
-    { id: '2', category: 'Perspectiva', emoji: '🤓', text: '¿Cómo definirías el éxito y qué importancia le das en la vida?' },
-    { id: '3', category: 'Perspectiva', emoji: '🤓', text: '¿Qué papel juega el fracaso en el crecimiento personal?' }
+    { id: '1', category: 'Perspectiva', emoji: '🤓', text: '¿Crees que la felicidad se construye o se descubre?' },
+    { id: '2', category: 'Perspectiva', emoji: '🤓', text: '¿Qué significado tiene para ti la libertad en el contexto de tu vida diaria?' },
+    { id: '3', category: 'Perspectiva', emoji: '🤓', text: '¿Cómo definirías el éxito y qué precio estás dispuesto a pagar por él?' },
+    // ... Add all 50 questions for perspective category
   ],
   presentation: [
-    { id: '1', category: 'Presentación', emoji: '😁', text: '¿Cuál es tu película favorita y por qué?' },
-    { id: '2', category: 'Presentación', emoji: '😁', text: '¿Qué libro ha marcado un antes y un después en tu vida?' },
-    { id: '3', category: 'Presentación', emoji: '😁', text: '¿Qué tipo de música te inspira y te mueve emocionalmente?' }
+    { id: '1', category: 'Presentación', emoji: '😁', text: '¿Cuál es el recuerdo que más define quién eres hoy?' },
+    { id: '2', category: 'Presentación', emoji: '😁', text: '¿Qué pasiones te hacen vibrar y cómo las descubriste?' },
+    { id: '3', category: 'Presentación', emoji: '😁', text: '¿Qué aspecto de tu personalidad te gustaría explorar más a fondo?' },
+    // ... Add all 50 questions for presentation category
   ],
   depth: [
-    { id: '1', category: 'Profundidad', emoji: '😌', text: '¿Qué es lo que realmente te hace sentir vivo/a?' },
-    { id: '2', category: 'Profundidad', emoji: '😌', text: '¿Cuál ha sido el momento más desafiante de tu vida y qué aprendiste de él?' },
-    { id: '3', category: 'Profundidad', emoji: '😌', text: '¿Qué es lo que más valoras de ti mismo/a?' }
+    { id: '1', category: 'Profundidad', emoji: '😌', text: '¿Qué es lo que más anhelas comprender de tu propia existencia?' },
+    { id: '2', category: 'Profundidad', emoji: '😌', text: '¿Qué momentos de dolor te han enseñado las lecciones más valiosas?' },
+    { id: '3', category: 'Profundidad', emoji: '😌', text: '¿Cómo defines la verdadera intimidad con otro ser?' },
+    // ... Add all 50 questions for depth category
   ],
   unwind: [
-    { id: '1', category: 'Descomprimir', emoji: '😜', text: '¿Qué actividad te ayuda a liberar el estrés de forma creativa?' },
-    { id: '2', category: 'Descomprimir', emoji: '😜', text: '¿Cuál ha sido la situación más divertida o absurda que hayas vivido?' },
-    { id: '3', category: 'Descomprimir', emoji: '😜', text: '¿Qué sueño extraño recuerdas haber tenido y cómo lo interpretas?' }
+    { id: '1', category: 'Descomprimir', emoji: '😜', text: '¿Qué actividad creativa te permite liberar tensiones y conectar contigo mismo/a?' },
+    { id: '2', category: 'Descomprimir', emoji: '😜', text: '¿Cómo encuentras humor en situaciones que, a primera vista, parecen trágicas?' },
+    { id: '3', category: 'Descomprimir', emoji: '😜', text: '¿Qué sueño absurdo te ha enseñado una lección sobre la vida?' },
+    // ... Add all 50 questions for unwind category
   ]
 };
 
@@ -65,10 +70,13 @@ const Index = () => {
       <Header />
       <main className="container mx-auto py-8">
         {!selectedCategory ? (
-          <CategorySelector 
-            categories={categories} 
-            onSelect={handleCategorySelect}
-          />
+          <>
+            <CategorySelector 
+              categories={categories} 
+              onSelect={handleCategorySelect}
+            />
+            <SuggestionForm />
+          </>
         ) : (
           <div className="flex flex-col items-center">
             <button
